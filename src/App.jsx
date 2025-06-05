@@ -10,11 +10,9 @@ function App() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false);
 
-    console.log(import.meta.env.VITE_CREATE_API_URL);
-    console.log(import.meta.env.VITE_FETCH_API_URL);
 
-    const createAPIUrl = import.meta.env.VITE_CREATE_API_URL? import.meta.env.VITE_CREATE_API_URL: "http://localhost:8000/api/create";
-    const fetchAPIUrl = import.meta.env.VITE_FETCH_API_URL? import.meta.env.VITE_FETCH_API_URL: "http://localhost:8000/api/products";
+    const createAPIUrl = import.meta.env.VITE_CREATE_API_URL? import.meta.env.VITE_CREATE_API_URL: "http://localhost:8080/api/create";
+    const fetchAPIUrl = import.meta.env.VITE_FETCH_API_URL? import.meta.env.VITE_FETCH_API_URL: "http://localhost:8080/api/products";
 
     useEffect(() => {
         setLoading(true);
