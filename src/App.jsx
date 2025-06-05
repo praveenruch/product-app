@@ -8,13 +8,19 @@ function App() {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+
+    console.log(import.meta.env.VITE_CREATE_API_URL);
+    console.log(import.meta.env.VITE_FETCH_API_URL);
+
+    const createAPIUrl = import.meta.env.VITE_CREATE_API_URL? import.meta.env.VITE_CREATE_API_URL: "http://localhost:8000/api/create";
+    const fetchAPIUrl = import.meta.env.VITE_FETCH_API_URL? import.meta.env.VITE_FETCH_API_URL: "http://localhost:8000/api/products";
 
     useEffect(() => {
         setLoading(true);
         const fetchProducts = async () => {
             try{
-                const res = await fetch('http://localhost:8080/api/products');
+                const res = await fetch(fetchAPIUrl, {});
                 const json = await res.json();
                 setProducts(json);
                 setLoading(false);
@@ -36,7 +42,7 @@ function App() {
     <>
         {loading &&  <p>Loading products...</p>}
         {error && <p>error loading products</p>}
-        <AddProduct addNewProduct={addNewProduct} />
+        <AddProduct addNewProduct={addNewProduct} createUrl={createAPIUrl} />
         <ProductList products={products}></ProductList>
 
     </>

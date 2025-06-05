@@ -2,7 +2,7 @@ import {useState}   from "react";
 import styled from "styled-components";
 
 
-export function AddProduct({addNewProduct}) {
+export function AddProduct({addNewProduct, createUrl}) {
 
     const [name, setName] = useState("");
 
@@ -21,7 +21,7 @@ export function AddProduct({addNewProduct}) {
 
     const addProduct = async(e) => {
         e.preventDefault();
-        fetch("http://localhost:8080/api/create", {
+        fetch(createUrl, {
             method: "POST",
             body: JSON.stringify({
                 name: name,
