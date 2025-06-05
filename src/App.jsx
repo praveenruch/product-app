@@ -32,7 +32,7 @@ function App() {
             }
         }
         fetchProducts();
-    },[setProducts,setLoading,setError]);
+    },[setProducts,setLoading,setError,fetchAPIUrl]);
 
     function addNewProduct(product) {
         setProducts([...products, product]);
